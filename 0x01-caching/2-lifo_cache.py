@@ -15,7 +15,8 @@ class LIFOCache(BaseCaching):
     def put(self, key, item):
         """Assigns a new item to the cache dictionary"""
         if key is not None and item is not None:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+            mxItems = BaseCaching.MAX_ITEMS
+            if len(self.cache_data) >= mxItems and key not in self.cache_data:
                 discard_key = self.cache_history[-1]
 
                 self.cache_data.pop(discard_key)
